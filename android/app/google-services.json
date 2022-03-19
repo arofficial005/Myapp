@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1007749489744",
+    "project_id": "e-society-dd2da",
+    "storage_bucket": "e-society-dd2da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007749489744:android:2a659051906372f1af9d55",
+        "android_client_info": {
+          "package_name": "com.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007749489744-foc263fe39qhc1ccammfost9rci8lsuq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWpfosC8bxdRnvVWJp_l8_mSMNARkcdWg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007749489744-foc263fe39qhc1ccammfost9rci8lsuq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
