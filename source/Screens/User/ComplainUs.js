@@ -11,7 +11,7 @@ const  ComplainUs=(props)=>
   const handleSubmit = () => {
 
 
-    //mazhar
+    
     setError(null)
     if (subject.trim() ==="") {
       return setError("Subject not be empty !")
