@@ -1,6 +1,7 @@
 import React,{Component,useState} from 'react';
 import { Text,View,Image,TextInput,TouchableOpacity,Pressable,StyleSheet} from 'react-native';
-
+import { firebase } from '@react-native-firebase/auth';
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 const AdminLogin = (props) => {
     const [email,setEmail] =useState("");
     const [password,setPassword] =useState("");
@@ -8,16 +9,27 @@ const AdminLogin = (props) => {
 
     const handleSubmit = () => {
       setError(null)
-  
+      
       if (email.trim() ==="") {
        return setError("Admin ID not be empty!")
-      } 
-      
+      }  
       else if (password.trim() === "") {
        return setError("Password not be empty !")
       }
   else{
-      props.navigation.navigate('SuperAdmin')
+    try {
+      firebase.auth().signInWithEmailAndPassword(email,password)
+      .then(function(user)
+      { 
+       alert("Login Successfully");
+       props.navigation.navigate('SuperAdmin')
+      }).catch((error)=>{
+        //  console.log('Error',err);
+         alert(error);
+      })
+    } catch (error) {
+       alert('Wrong password.');
+    }
       }
     }
   

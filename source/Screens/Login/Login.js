@@ -1,5 +1,4 @@
 import { firebase } from '@react-native-firebase/auth';
-import auth from '@react-native-firebase/auth';
 import React,{Component,useState} from 'react';
 import { Text,View,Image,TextInput,TouchableOpacity} from 'react-native';
 import styles from './Login.style.js'
@@ -13,7 +12,7 @@ const Login=(props)=>
   const conc = `${email}` + `${fix}` ; 
   const handleSubmit = () => {
     setError(null)
-
+    
     if (email.trim().length < 12) {
       return setError("Roll No. is invalid")
      } 
@@ -21,24 +20,23 @@ const Login=(props)=>
      return setError("Password  not be empty !")
     }
  
+ 
 else{
  try {
    firebase.auth().signInWithEmailAndPassword(conc,password)
-   .then(function(user)
-   { 
-    alert("Login Successfully");
-    props.navigation.navigate('Home')
-   });
+  .then((user)=>{
+   alert('User Login successfully');
+   props.navigation.navigate('Home');
+  }).catch((err)=>{
+    //  console.log('Error',err);
+     alert(err);
+  })
  } catch (error) {
-  if (error.code === 'auth/wrong-password') {
-    console.log("Wrong password");
     alert('Wrong password.');
-  }
+  
  }
-
-    
-    }
-  }
+}
+}
 
 
     return (

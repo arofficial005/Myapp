@@ -12,7 +12,7 @@ const Mainlogin=(props)=>{
         <>
         <Pressable >
             
-            {<Image source={{ uri: 'https://st2.depositphotos.com/1004061/10573/i/600/depositphotos_105732032-stock-photo-paper-people-standing-together.jpg' }} style={styles.imgstyle} />} 
+            {<Image source={{ uri: 'https://scontent.flhe2-2.fna.fbcdn.net/v/t39.30808-6/276323441_277087557939576_6784977914137874849_n.png?_nc_cat=101&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeHoDdMPPXv6XD5bUZJ-V9ls_Ccc67suiCj8Jxzruy6IKHsh2N4RC8WXePtOTDDgRljZLazoZDG7DMmH8a4ObPWI&_nc_ohc=JABzPPqiYtUAX9sCfWq&_nc_zt=23&_nc_ht=scontent.flhe2-2.fna&oh=00_AT-l2swSq5odBuUkOCNXHM4Ab5nld_NLy8xVnlWzgEzxmw&oe=623BA967' }} style={styles.imgstyle} />} 
           </Pressable>
         <View style={styles.container}>
        <View style={styles.column}>
@@ -41,10 +41,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1, 
     flexDirection: 'row',
-    backgroundColor:'#f5f3e6',
+    backgroundColor:'#FFFFFF',
   },
 mainn:{
-  marginTop:100,
+  backgroundColor:'#FFFFFF',
 },
   column:{
     flex: 1,
@@ -73,9 +73,8 @@ mainn:{
     color: 'white',
   },
   imgstyle:{ 
-    height: 300,
-    borderRadius:20,
-      marginBottom: 174,
+    height: 450,
+      marginBottom: 125,
   },
 
 });
