@@ -1,7 +1,7 @@
 import React,{Component,useState} from 'react';
 import { Text,View,Image,TextInput,TouchableOpacity,Pressable,StyleSheet} from 'react-native';
 import { firebase } from '@react-native-firebase/auth';
-import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+import firestore from '@react-native-firebase/firestore';
 const AdminLogin = (props) => {
     const [email,setEmail] =useState("");
     const [password,setPassword] =useState("");
@@ -18,11 +18,14 @@ const AdminLogin = (props) => {
       }
   else{
     try {
-      firebase.auth().signInWithEmailAndPassword(email,password)
+      firestore()
+      .collection('Admins')
+      .get()
       .then(function(user)
       { 
        alert("Login Successfully");
-       props.navigation.navigate('SuperAdmin')
+       console.log('Usersss===.',user.data());
+      //  props.navigation.navigate('SuperAdmin')
       }).catch((error)=>{
         //  console.log('Error',err);
          alert(error);

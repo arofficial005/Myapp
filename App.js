@@ -23,6 +23,7 @@ import ComplainUs from './source/Screens/User/ComplainUs';
 import Mainlogin from './source/Screens/Login/Mainlogin';
 import AdminLogin from './source/Screens/Login/AdminLogin';
 import CoordinatorLogin from './source/Screens/Login/CoordinatorLogin';
+import 'react-native-gesture-handler';
 const  App=()=>{
   const Stack=createStackNavigator();
 
