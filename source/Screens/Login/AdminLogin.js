@@ -1,6 +1,5 @@
 import React,{Component,useState} from 'react';
 import { Text,View,Image,TextInput,TouchableOpacity,Pressable,StyleSheet} from 'react-native';
-import { firebase } from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 const AdminLogin = (props) => {
     const [email,setEmail] =useState("");
@@ -17,21 +16,28 @@ const AdminLogin = (props) => {
        return setError("Password not be empty !")
       }
   else{
+    var dataArray = [];
     try {
-      firestore()
-      .collection('Admins')
+      firestore().collection('Admins')
+      .doc(email)
       .get()
-      .then(function(user)
-      { 
-       alert("Login Successfully");
-       console.log('Usersss===.',user.data());
-      //  props.navigation.navigate('SuperAdmin')
-      }).catch((error)=>{
-        //  console.log('Error',err);
-         alert(error);
+      .then(documentSnapshot => {
+        if(documentSnapshot.exists){
+          dataArray = documentSnapshot.data();
+          console.log('User Data: ', dataArray);
+          var pwdDB = dataArray.password
+          if(password == pwdDB)
+          {
+            alert('Admin Login successfully');
+            props.navigation.navigate('SuperAdmin');
+          } else {
+            alert('invalid Login');
+          }
+        }
       })
+      
     } catch (error) {
-       alert('Wrong password.');
+       alert('invalid Login');
     }
       }
     }
@@ -51,6 +57,7 @@ const AdminLogin = (props) => {
           <TextInput
             style={styles.TextInput}
             placeholder="admin id"
+            keyboardType='number-pad'
             placeholderTextColor="#003f5c"
             value={email}
             onChangeText={(email) => setEmail(email)}
@@ -68,7 +75,7 @@ const AdminLogin = (props) => {
         </View>
    
         <TouchableOpacity>
-          <Text style={styles.forgot_button}>Forgot Password?</Text>
+          <Text style={styles.forgot_button} onPress={() => { props.navigation.navigate('SuperAdmin');}} >Forgot Password?</Text>
         </TouchableOpacity> 
   
         <TouchableOpacity  style={styles.loginBtn} onPress={handleSubmit}>

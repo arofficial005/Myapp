@@ -1,4 +1,4 @@
-import { firebase } from '@react-native-firebase/auth';
+import { firebase, FirebaseAuthTypes } from '@react-native-firebase/auth';
 import React,{Component,useState} from 'react';
 import { Text,View,Image,TextInput,TouchableOpacity} from 'react-native';
 import styles from './Login.style.js'
@@ -8,31 +8,44 @@ const Login=(props)=>
   const [email,setEmail] =useState("");
   const [password,setPassword] =useState("");
   const[error, setError] = useState(null)
+  const [disabledloginbtn, setDisabledloginbtn] = useState(false)
   const fix = '@uog.edu.pk';
   const conc = `${email}` + `${fix}` ; 
   const handleSubmit = () => {
+    setDisabledloginbtn(true)
     setError(null)
-    
     if (email.trim().length < 12) {
       return setError("Roll No. is invalid")
+      setDisabledloginbtn(false)
      } 
    if (password.trim() === "") {
      return setError("Password  not be empty !")
+     setDisabledloginbtn(false)
     }
  
  
 else{
+
  try {
    firebase.auth().signInWithEmailAndPassword(conc,password)
   .then((user)=>{
-   alert('User Login successfully');
-   props.navigation.navigate('Home');
+    if(user.user.emailVerified){
+      alert('User Login successfully');
+      props.navigation.navigate('Home');
+      setDisabledloginbtn(false)
+    } else {
+      alert('Please verify your email checkout inbox');
+      setDisabledloginbtn(false)
+    }
+    
   }).catch((err)=>{
-    //  console.log('Error',err);
-     alert(err);
+    alert('Sorry it seems you entered wrong Roll.no / password');
+    setDisabledloginbtn(false)
+    console.log(err);
   })
  } catch (error) {
-    alert('Wrong password.');
+  setDisabledloginbtn(false)
+    alert('invalid login');
   
  }
 }
@@ -73,14 +86,15 @@ else{
       </View>
  
       <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
+        <Text style={styles.forgot_button} onPress={() => { props.navigation.navigate('Forgott'); } }>Forgot Password?</Text>
       </TouchableOpacity> 
 
-      <TouchableOpacity  style={styles.loginBtn} onPress={handleSubmit}>
+      <TouchableOpacity disabled={disabledloginbtn}  style={styles.loginBtn }
+      onPress={handleSubmit}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity  style={styles.register_btn} onPress={() => { props.navigation.navigate('Register'); } }>
-        <Text style={styles.loginText}>REGISTER</Text>
+        <Text style={styles.loginText}>Register here !</Text>
       </TouchableOpacity>
     </View>
     </>

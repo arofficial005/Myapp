@@ -11,6 +11,7 @@ export default StyleSheet.create({
     height: 50,
     flex: 1,
     padding: 10,
+    textAlign:'center',
     marginLeft: 20,
   },
   inputView:{

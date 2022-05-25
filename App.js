@@ -23,7 +23,7 @@ import ComplainUs from './source/Screens/User/ComplainUs';
 import Mainlogin from './source/Screens/Login/Mainlogin';
 import AdminLogin from './source/Screens/Login/AdminLogin';
 import CoordinatorLogin from './source/Screens/Login/CoordinatorLogin';
-import 'react-native-gesture-handler';
+import Forgot from './source/Screens/Login/Forgot';
 const  App=()=>{
   const Stack=createStackNavigator();
 
@@ -31,12 +31,52 @@ const  App=()=>{
       
       <NavigationContainer >
      <Stack.Navigator initialRouteName="MainLogin">
-      <Stack.Screen name="Login" component={Login}/>
+      <Stack.Screen name="Login" component={Login}
+      options ={{  
+        headerTitleStyle:{
+          fontSize:25,
+          color: '#fff',
+        },
+        headerStyle: {
+          backgroundColor: '#94baf2',
+        },
+        headerTitle:"Student Login",
+        headerTitleAlign:"center", }}/>
       <Stack.Screen name="MainLogin" component={Mainlogin}
        options ={{  headerShown: false}}/>     
-      <Stack.Screen name="AdminLogin" component={AdminLogin}/>
-      <Stack.Screen name="CoordinatorLogin" component={CoordinatorLogin}/>
-      <Stack.Screen name="Register" component={Register}/>
+      <Stack.Screen name="AdminLogin" component={AdminLogin}
+      options ={{  
+        headerTitleStyle:{
+          fontSize:25,
+          color: '#fff',
+        },
+        headerStyle: {
+          backgroundColor: '#94baf2',
+        },
+        headerTitle:"Admin Login",
+        headerTitleAlign:"center", }}/>
+      <Stack.Screen name="CoordinatorLogin" component={CoordinatorLogin}
+      options ={{  
+        headerTitleStyle:{
+          fontSize:25,
+          color: '#fff',
+        },
+        headerStyle: {
+          backgroundColor: '#94baf2',
+        },
+        headerTitle:"Coordinator Login",
+        headerTitleAlign:"center", }}/>
+      <Stack.Screen name="Register" component={Register}
+      options ={{  
+        headerTitleStyle:{
+          fontSize:25,
+          color: '#fff',
+        },
+        headerStyle: {
+          backgroundColor: '#94baf2',
+        },
+        headerTitle:"Student Registration",
+        headerTitleAlign:"center", }}/>
        <Stack.Screen name="Home" component={Home}
       options ={{  
         headerTitleStyle:{
@@ -95,11 +135,15 @@ const  App=()=>{
           <Stack.Screen name="Coordinators" component={CoordinatorManage}/>  
           <Stack.Screen name="Socities-Management" component={SocitiesManage}/> 
           <Stack.Screen name="My-Socities" component={MySocities}/>  
-          <Stack.Screen name="Manage-Hierarchy" component={ManageHierarchy}/> 
+          <Stack.Screen name="Manage-Hierarchy" component={ManageHierarchy}
+          options ={{  
+            headerShown: false,
+          }}/> 
           <Stack.Screen name="Voter-Management" component={VoterManagement}/>
           <Stack.Screen name="Check-Results" component={CheckResults}/>
           <Stack.Screen name="Coordinator-Complaints" component={CoordinatorComplaints}/>
           <Stack.Screen name="Complaint-Us" component={ComplainUs}/> 
+          <Stack.Screen name="Forgott" component={Forgot}/>
      </Stack.Navigator>
     </NavigationContainer>
     

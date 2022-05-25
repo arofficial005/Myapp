@@ -1,15 +1,29 @@
 import React from 'react';
-import {  StyleSheet, Text, View, Image, TextInput, TouchableHighlight,TouchableOpacity, Pressable } from 'react-native';
+import { firebase } from '@react-native-firebase/auth';
+import {  StyleSheet, Text, View, Image, TextInput, TouchableHighlight,TouchableOpacity, Pressable ,Alert} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { LogBox } from 'react-native'; // gesture handler warning
+
 const Home=(props)=>{
+  const signOutUser = () => {
+    return Alert.alert(
+      "Logout ?",
+      "Do you want to Logout?",
+      [
+        {
+          text: "Yes",
+          onPress: ()=>props.navigation.navigate('MainLogin')
+        },
+        // Does nothing but dismiss the dialog when tapped
+        {
+          text: "No",
+        },
+      ]
+    );
+  };
 
-  LogBox.ignoreLogs([
-    "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
-  ]); //this is for  gesture handler warning
-  
+
    return (
-
+     <>
      <ScrollView style={styles.mainn}>
         <><View style={styles.container}>
        <View style={styles.column}>
@@ -59,8 +73,16 @@ const Home=(props)=>{
          <TouchableHighlight>
              {<Image source={{ uri: 'https://thumbs.dreamstime.com/b/hand-putting-ballot-box-close-up-glass-149392701.jpg' }} style={styles.imgstyle}/>}
            </TouchableHighlight>
-           <Pressable style={styles.butonlast} onPress={() => { props.navigation.navigate('Complaint-Us'); } }>
+           <Pressable style={styles.button} onPress={() => { props.navigation.navigate('Complaint-Us'); } }>
              <Text style={styles.text}>Complaint Us</Text>
+           </Pressable>
+         </View>
+         <View style={styles.column}>
+         <TouchableHighlight>
+             {<Image source={{ uri: 'https://icons.iconarchive.com/icons/graphicloads/100-flat-2/128/inside-logout-icon.png' }} style={styles.imgstyle}/>}
+           </TouchableHighlight>
+           <Pressable style={styles.button} onPress={signOutUser} >
+             <Text style={styles.text}>Logout</Text>
            </Pressable>
          </View>
        </View>
@@ -75,6 +97,7 @@ const Home=(props)=>{
    
              </>
       </ScrollView>
+      </>
     );
   }
  
@@ -141,8 +164,8 @@ mainn:{
     paddingHorizontal: 10,
     borderRadius: 10,
     elevation: 5,
-    backgroundColor: '#f5ac58',
-    
+    backgroundColor: '#f5ac58', 
+    marginBottom: 10,
   },
 });
 export default Home;

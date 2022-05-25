@@ -33,7 +33,9 @@ else{
   auth()
   .createUserWithEmailAndPassword(conc, password)
   .then((res) => {
-    alert(name+' you Registerd Succesfully!');
+   auth().currentUser.sendEmailVerification();
+    alert('please check your Email ');
+    // alert(name+' you Registerd Succesfully!');
     // alert('Hello',res.user.conc);
     // StoreUser(res.user.email)
   })
@@ -93,7 +95,7 @@ else{
         <TextInput
           style={styles.TextInput}
           value={password}
-          placeholder="Password"
+          placeholder=" Password"
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
@@ -134,6 +136,7 @@ TextInput:{
   height: 50,
   flex: 1,
   padding: 10,
+  textAlign:'center',
   marginLeft: 20,
 
 },

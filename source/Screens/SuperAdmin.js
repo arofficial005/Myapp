@@ -1,7 +1,25 @@
 import React from 'react';
-import {  StyleSheet, Text, View, Image, TextInput, TouchableHighlight, Pressable } from 'react-native';
+import {  StyleSheet, Text, View, Image, TextInput, TouchableHighlight, Pressable,Alert } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 const SuperAdmin=(props)=>{
+
+  const signOutUser = () => {
+    return Alert.alert(
+      "Logout ?",
+      "Do you want to Logout?",
+      [
+        {
+          text: "Yes",
+          onPress: ()=>props.navigation.navigate('MainLogin')
+        },
+        // Does nothing but dismiss the dialog when tapped
+        {
+          text: "No",
+        },
+      ]
+    );
+  };
+
    return (
      <ScrollView style={styles.mainn}>
         <><View style={styles.container}>
@@ -14,22 +32,23 @@ const SuperAdmin=(props)=>{
          </Pressable>
        </View>
        <View style={styles.column}>
-         <TouchableHighlight>
-           {<Image source={{ uri: 'https://st2.depositphotos.com/1004061/10573/i/600/depositphotos_105732032-stock-photo-paper-people-standing-together.jpg' }} style={styles.imgstyle} />}
-         </TouchableHighlight>
-         <Pressable style={styles.button} onPress={() => { props.navigation.navigate('Socities-Management'); } }>
-           <Text style={styles.text}>Socities</Text>
-         </Pressable>
-       </View>
-     </View>
-     {/************************************************************************************************** */}
-       <View style={styles.container}>
-         <View style={styles.column}>
            <TouchableHighlight>
              {<Image source={{ uri: 'https://us.123rf.com/450wm/iqoncept/iqoncept1801/iqoncept180100012/92709245-complaints-comments-bad-negative-feedback-box-3d-illustration.jpg?ver=6' }} style={styles.imgstyle} />}
            </TouchableHighlight>
-           <Pressable style={styles.butonlast}>
-             <Text style={styles.text} onPress={() => { props.navigation.navigate('Complaints'); }}>Complaint  Box</Text>
+           <Pressable style={styles.button}>
+             <Text style={styles.text} onPress={() => { props.navigation.navigate('Complaints'); }}>Complaint 's</Text>
+           </Pressable>
+         </View>
+     </View>
+     {/************************************************************************************************** */}
+       <View style={styles.container}>
+        
+         <View style={styles.column}>
+         <TouchableHighlight>
+             {<Image source={{ uri: 'https://icons.iconarchive.com/icons/graphicloads/100-flat-2/128/inside-logout-icon.png' }} style={styles.imgstyle}/>}
+           </TouchableHighlight>
+           <Pressable style={styles.butonlast} onPress={signOutUser} >
+             <Text style={styles.text}>Logout</Text>
            </Pressable>
          </View>
       </View>
@@ -71,7 +90,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 5,
     backgroundColor: '#f5ac58',
+    width: "40%",
     
+    marginBottom: 10,
   },
   text: {
     fontSize: 16,

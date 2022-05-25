@@ -1,39 +1,95 @@
-import { StyleSheet, Text, View,FlatList } from 'react-native'
-import React from 'react'
+import { StyleSheet, TextInput, View,SafeAreaView,TouchableOpacity,Text} from 'react-native'
+import React ,{useState}from 'react'
+import firestore from '@react-native-firebase/firestore';
+const  SocitiesManage=(props)=>
 
-const SocitiesManage = () => {
+{
+  const [society,setname] =useState("");
+  const[error, setError] = useState(null)
+
+
+
+  const handleSubmit = () => {
+ 
+
+//  var count =''+this.state.length
+    setError(null)
+    if (society.trim() ==="") {
+      return setError("Society name no be empty!")
+     } 
+else{
+  firestore()
+  .collection('Socities')
+  .doc(society)
+  .set({
+    Society: society,
+    // message: message,
+  })
+  .then(() => {
+    alert('Society Added Successfully')
+  });
+  props.navigation.navigate('SuperAdmin');
+    }
+  }
+
+
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={[
-          {key: 'The Organizer Club'},
-          {key: 'Hayatian Computing Society'},
-          {key: 'Software Engeering Society'},
-       
-        ]}
-        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-      />
-    </View>
-  )
+    <>
+    { error && <Text style={{
+      color: 'red',    
+    }}>{error}</Text>}
+    
+    <SafeAreaView style={styles.container}>
+      
+    <TextInput
+      style={styles.inputsubject}
+      value={society}
+      placeholder="Society name"
+      onChangeText={(society) => setname(society)}
+    />
+     
+     <TouchableOpacity  style={styles.loginBtn} onPress ={handleSubmit}>
+        <Text style={styles.loginText}>Add</Text>
+      </TouchableOpacity>
+  </SafeAreaView>
+  </>
+  
+);
 }
+export default SocitiesManage;
 
-export default SocitiesManage
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 22,
-   },
-   item: {
-     padding: 10,
-     fontSize: 18,
-     height: 44,  
-      width: "100%",
-      borderRadius: 25,
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: 30,
-      backgroundColor: "#f5ac58",
-      textAlign: 'center',
-   },
-})
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius:10,
+    height:120,
+  fontSize: 18,  
+  textAlignVertical:'top',
+  },
+ 
+  inputsubject: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius:10,
+    fontSize: 18, 
+  },
+  loginBtn:{
+    width: "30%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    alignItems:"center",
+    backgroundColor: "#f5ac58",
+    justifyContent: "center",
+    marginLeft:"35%",
+  },
+
+});

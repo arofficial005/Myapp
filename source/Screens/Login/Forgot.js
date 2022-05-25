@@ -1,41 +1,29 @@
 import { StyleSheet, TextInput, View,SafeAreaView,TouchableOpacity,Text} from 'react-native'
 import React ,{useState}from 'react'
-import firestore from '@react-native-firebase/firestore';
-const  ComplainUs=(props)=>
+import { firebase ,auth,sendPasswordResetEmail,} from '@react-native-firebase/auth';
+const  Forgot=(props)=>
 
 {
-  const [subject,setname] =useState("");
-  const [message,setmessage] =useState("");
+  const [email,setemail] =useState("");
   const[error, setError] = useState(null)
 
 
 
   const handleSubmit = () => {
- 
-
-//  var count =''+this.state.length
-var count=count+1
     setError(null)
-    // if (subject.trim() ==="") {
-    //   return setError("Subject not be empty !")
-    //  } 
-    if (message.trim().length < 30) {
-      return setError("Enter minmum 30 characters!")  
+    if (email.trim() ==="" || email.length<23) {
+      return setError("Enter valid email !")
      } 
-else{
-  firestore()
-  .collection('Complaints')
-  .doc(count)
-  .set({
-    // subject: subject,
-    message: message,
-  })
-  .then(() => {
-    alert('Your Complaint has been submitted to admin !')
-  });
- 
-    props.navigation.navigate('Home')
-    }
+     else{
+      try {
+        firebase.auth().sendPasswordResetEmail( email);
+        alert("Password reset link sent!");
+      } catch (err) {
+        console.error(err);
+        alert(err.message);
+      }
+     }
+
   }
 
 
@@ -46,28 +34,22 @@ else{
     }}>{error}</Text>}
     
     <SafeAreaView style={styles.container}>
-    {/* <TextInput
+    <Text style={{color:'blue',textAlign:'center'}}>Enter e-mail in this format  'xxxxxxxx-xxx@uog.edu.pk' </Text>
+    <TextInput
       style={styles.inputsubject}
-      value={subject}
-      placeholder="Subject"
-      onChangeText={(subject) => setname(subject)}
-    /> */}
-    <TextInput style={styles.input}
-placeholder="Type Your Complaint Here !"
-value={message}
-numberOfLines={1}
-multiline={true}
-onChangeText={(message) => setmessage(message)}  
+      value={email}
+      placeholder="Enter your Registered E-mail"
+      onChangeText={(email) => setemail(email)}
     />
      <TouchableOpacity  style={styles.loginBtn} onPress ={handleSubmit}>
-        <Text style={styles.loginText}>Submit</Text>
+        <Text style={styles.loginText}>Forgot</Text>
       </TouchableOpacity>
   </SafeAreaView>
   </>
   
 );
 }
-export default ComplainUs;
+export default Forgot;
 
 
 const styles = StyleSheet.create({
