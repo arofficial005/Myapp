@@ -71,9 +71,8 @@ else{
     <TextInput
       style={styles.inputsubject}
       value={id}
-      keyboardType='number-pad'
-      maxLength={4}
-      placeholder="Coordinator ID"
+      keyboardType='email-address'
+      placeholder="Coordinator E-mail"
       onChangeText={(id) => setid(id)}
     />
     <TextInput

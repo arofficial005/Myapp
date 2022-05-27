@@ -30,7 +30,7 @@ const Coordinator=(props)=>{
            {<Image source={{ uri: 'https://st2.depositphotos.com/1004061/10573/i/600/depositphotos_105732032-stock-photo-paper-people-standing-together.jpg' }} style={styles.imgstyle} />}
          </TouchableHighlight>
          <Pressable style={styles.button}>
-           <Text style={styles.text}  onPress={() => { props.navigation.navigate('My-Socities',{email:email}); } }>My Socities</Text>
+           <Text style={styles.text}  onPress={() => { props.navigation.navigate('My-Socities',{email:email}); } }>My Society</Text>
          </Pressable>
        </View>
        <View style={styles.column}>

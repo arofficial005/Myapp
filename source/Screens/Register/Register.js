@@ -9,10 +9,12 @@ const  Register=(props)=>
   const [password,setPassword] =useState("");
   const [confirmPassword,Retypepass] =useState("");
   const[error, setError] = useState(null)
+  const [disabledloginbtn, setDisabledloginbtn] = useState(false)
   const fix = '@uog.edu.pk';
   const conc = `${email}` + `${fix}` ; 
   
   const handleSubmit = () => {
+    setDisabledloginbtn(true)
     setError(null)
     if (name.trim() ==="") {
       return setError("Enter Your name !")
@@ -30,14 +32,13 @@ const  Register=(props)=>
       return setError("Password does't match")
      }
 else{
+  
   auth()
   .createUserWithEmailAndPassword(conc, password)
   .then((res) => {
    auth().currentUser.sendEmailVerification();
     alert('please check your Email ');
-    // alert(name+' you Registerd Succesfully!');
-    // alert('Hello',res.user.conc);
-    // StoreUser(res.user.email)
+    setDisabledloginbtn(false)
   })
   .catch(error => {
     // setLoading(false);
@@ -47,7 +48,7 @@ else{
     if (error.code === 'auth/invalid-email') {
       alert('This email address is invalid!');
     }
-    
+    setDisabledloginbtn(false)
   });
 
     //props.navigation.navigate('Home')

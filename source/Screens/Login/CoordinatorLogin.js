@@ -7,18 +7,19 @@ const CoordinatorLogin = (props) => {
     const [password,setPassword] =useState("");
     const[error, setError] = useState(null)
    
+  const [disabledloginbtn, setDisabledloginbtn] = useState(false)
     const handleSubmit = () => {
       setError(null)
   
       if (email.trim() ==="") {
-       return setError("Coordinator ID not be empty!")
+       return setError("Coordinator E-mail not be empty!")
       } 
       
       else if (password.trim() === "") {
        return setError("Password not be empty !")
       }
   else{
-     
+    setDisabledloginbtn(true)
     var dataArray = [];
     try {
       firestore().collection('Coordinators')
@@ -31,10 +32,12 @@ const CoordinatorLogin = (props) => {
           var pwdDB = dataArray.password
           if(password == pwdDB)
           {
-            alert('Admin Login successfully');
+            alert('Coordinator Login successfully');
             props.navigation.navigate('Coordinator',{email:email});
+            setDisabledloginbtn(false)
           } else {
             alert('invalid Login');
+            setDisabledloginbtn(false)
           }
         }
       })
@@ -59,8 +62,8 @@ const CoordinatorLogin = (props) => {
            <View style={styles.inputView}>
           <TextInput
             style={styles.TextInput}
-            placeholder="Coordinator id"
-            keyboardType='number-pad'
+            placeholder="Coordinator E-mail"
+            keyboardType='email-address'
             placeholderTextColor="#003f5c"
             value={email}
             onChangeText={(email) => setEmail(email)}

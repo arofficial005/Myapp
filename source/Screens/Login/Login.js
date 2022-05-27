@@ -12,19 +12,18 @@ const Login=(props)=>
   const fix = '@uog.edu.pk';
   const conc = `${email}` + `${fix}` ; 
   const handleSubmit = () => {
-    setDisabledloginbtn(true)
+    
     setError(null)
     if (email.trim().length < 12) {
       return setError("Roll No. is invalid")
-      setDisabledloginbtn(false)
      } 
    if (password.trim() === "") {
      return setError("Password  not be empty !")
-     setDisabledloginbtn(false)
     }
  
  
 else{
+  setDisabledloginbtn(true)
 
  try {
    firebase.auth().signInWithEmailAndPassword(conc,password)

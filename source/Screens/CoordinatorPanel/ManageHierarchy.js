@@ -49,121 +49,144 @@ placeholderTextColor='#fff'
      <TextInput style={styles.txt} placeholder="Department"
       underlineColorAndroid={'transparent'}
       value={pdep}
-      onChangeText={(pdep) => setpdep(pdep)}/>
+      onChangeText={(pdep) => setpdep(pdep)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="E-mail"
       underlineColorAndroid={'transparent'}
       value={pemail}
-      onChangeText={(pemail) => setpemail(pemail)}/>
+      onChangeText={(pemail) => setpemail(pemail)}
+      placeholderTextColor='#fff'/>
 
       
      <Text style={styles.title}>Vice President</Text>
      <TextInput style={styles.txt} placeholder="Enter name"
       underlineColorAndroid={'transparent'}
       value={vpname}
-      onChangeText={(vpname) => setvpname(vpname)}/>
+      onChangeText={(vpname) => setvpname(vpname)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="Department"
       underlineColorAndroid={'transparent'}
       value={vpdep}
-      onChangeText={(vpdep) => setvpdep(vpdep)}/>
+      onChangeText={(vpdep) => setvpdep(vpdep)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="E-mail"
       underlineColorAndroid={'transparent'}
       value={vpemail}
-      onChangeText={(vpemail) => setvpemail(vpemail)}/>
+      onChangeText={(vpemail) => setvpemail(vpemail)}
+      placeholderTextColor='#fff'/>
       
      <Text style={styles.title}>Finance Secretary</Text>
      <TextInput style={styles.txt} placeholder="Enter name"
       underlineColorAndroid={'transparent'}
       value={fsname}
-      onChangeText={(fsname) => setfsname(fsname)}/>
+      onChangeText={(fsname) => setfsname(fsname)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="Department"
       underlineColorAndroid={'transparent'}
       value={fsdep}
-      onChangeText={(fsdep) => setfsdep(fsdep)}/>
+      onChangeText={(fsdep) => setfsdep(fsdep)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="E-mail"
       underlineColorAndroid={'transparent'}
       value={fsemail}
-      onChangeText={(fsemail) => setfsemail(fsemail)}/>
+      onChangeText={(fsemail) => setfsemail(fsemail)}
+      placeholderTextColor='#fff'/>
       
      <Text style={styles.title}>General Secretory</Text>
      <TextInput style={styles.txt} placeholder="Enter name"
       underlineColorAndroid={'transparent'}
       value={gsname}
-      onChangeText={(gsname) => setgsname(gsname)}/>
+      onChangeText={(gsname) => setgsname(gsname)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="Department"
       underlineColorAndroid={'transparent'}
       value={gsdep}
-      onChangeText={(gsdep) => setgsdep(gsdep)}/>
+      onChangeText={(gsdep) => setgsdep(gsdep)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="E-mail"
       underlineColorAndroid={'transparent'}
       value={gsemail}
-      onChangeText={(gsemail) => setgsemail(gsemail)}/>
+      onChangeText={(gsemail) => setgsemail(gsemail)}
+      placeholderTextColor='#fff'/>
       
      <Text style={styles.title}>Joint Secretory</Text>
      <TextInput style={styles.txt} placeholder="Enter name"
       underlineColorAndroid={'transparent'}
       value={jsname}
-      onChangeText={(jsname) => setjsname(jsname)}/>
+      onChangeText={(jsname) => setjsname(jsname)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="Department"
       underlineColorAndroid={'transparent'}
       value={jsdep}
-      onChangeText={(jsdep) => setjsdep(jsdep)}/>
+      onChangeText={(jsdep) => setjsdep(jsdep)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="E-mail"
       underlineColorAndroid={'transparent'}
       value={jsemail}
-      onChangeText={(jsemail) => setjsemail(jsemail)}/>
+      onChangeText={(jsemail) => setjsemail(jsemail)}
+      placeholderTextColor='#fff'/>
       
      <Text style={styles.title}>Information Secretary</Text>
      <TextInput style={styles.txt} placeholder="Enter name"
       underlineColorAndroid={'transparent'}
       value={isname}
-      onChangeText={(isname) => setisname(isname)}/>
+      onChangeText={(isname) => setisname(isname)}
+      placeholderTextColor='#fff'/>
      <TextInput style={styles.txt} placeholder="Department"
       underlineColorAndroid={'transparent'}
       value={isdep}
-      onChangeText={(isdep) => setisdep(isdep)}/>
+      onChangeText={(isdep) => setisdep(isdep)}
+      placeholderTextColor='#fff'/>
      <TextInput style={styles.txt} placeholder="E-mail"
       underlineColorAndroid={'transparent'}
       value={isemail}
-      onChangeText={(isemail) => setisemail(isemail)}/>
+      onChangeText={(isemail) => setisemail(isemail)}
+      placeholderTextColor='#fff'/>
       
      <Text style={styles.title}>Media Manager</Text>
      <TextInput style={styles.txt} placeholder="Enter name"
       underlineColorAndroid={'transparent'}
       value={mmname}
-      onChangeText={(mmname) => setmmname(mmname)}/>
+      onChangeText={(mmname) => setmmname(mmname)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="Department"
       underlineColorAndroid={'transparent'}
       value={mmdep}
-      onChangeText={(mmdep) => setmmdep(mmdep)}/>
+      onChangeText={(mmdep) => setmmdep(mmdep)}
+      placeholderTextColor='#fff'/>
 
      <TextInput style={styles.txt} placeholder="E-mail"
       underlineColorAndroid={'transparent'}
       value={mmemail}
-      onChangeText={(mmemail) => setmmemail(mmemail)}/>
+      onChangeText={(mmemail) => setmmemail(mmemail)}
+      placeholderTextColor='#fff'/>
       
      <Text style={styles.title}>Graphic Designer</Text>
      <TextInput style={styles.txt} placeholder="Enter name"
       underlineColorAndroid={'transparent'}
       value={gdname}
-      onChangeText={(gdname) => setgdname(gdname)}/>
+      onChangeText={(gdname) => setgdname(gdname)}
+      placeholderTextColor='#fff'/>
      <TextInput style={styles.txt} placeholder="Department"
       underlineColorAndroid={'transparent'}
       value={gddep}
-      onChangeText={(gddep) => setgddep(gddep)}/>
+      onChangeText={(gddep) => setgddep(gddep)}
+      placeholderTextColor='#fff'/>
      <TextInput style={styles.txt} placeholder="E-mail"
       underlineColorAndroid={'transparent'}
       value={gdemail}
-      onChangeText={(gdemail) => setgdemail(gdemail)}/>
+      onChangeText={(gdemail) => setgdemail(gdemail)}
+      placeholderTextColor='#fff'/>
       <TouchableOpacity  style={styles.loginBtn} onPress={handleSubmit}>
         
         <Text style={styles.loginText}>Save</Text>
@@ -209,7 +232,6 @@ marginBottom:20,
 color:'#fff',
 borderBottomColor:'#f8f8f8',
 borderBottomWidth:1,
-placeholderTextColor:'#fff',
   },
   loginBtn:{
     width: "30%",
