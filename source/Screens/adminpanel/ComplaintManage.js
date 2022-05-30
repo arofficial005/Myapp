@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View ,FlatList} from 'react-native'
+import { StyleSheet,ScrollView, Text, View ,FlatList} from 'react-native'
 import React,{Component,useState,useEffect,useCallback} from 'react'
-import { firebase } from '@react-native-firebase/auth';
+
 
 
 
@@ -27,13 +27,16 @@ const ComplainManage = () => {
   
 const data=[{id:1}]
   return (
-
+<>
+<ScrollView>
    <View style={styles.container}>
       <FlatList
-      renderItem={({item})=><Text styles={style.item}>{item._data.message}</Text>}
+      renderItem={({item})=><Text >{item._data.message}</Text>}
       />
       <Text>Hello world</Text>
     </View>
+    </ScrollView>
+    </>
   )
 }
 

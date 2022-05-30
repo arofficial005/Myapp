@@ -49,7 +49,7 @@ const Coordinator=(props)=>{
              {<Image source={{ uri: 'https://caltechsites-prod.s3.amazonaws.com/scienceexchange/images/Voting-Elections-Topics-Image.2e16d0ba.fill-650x400-c100_layt0GB.jpg' }} style={styles.imgstyle} />}
            </TouchableHighlight>
            <Pressable style={styles.button}>
-             <Text style={styles.text}onPress={() => { props.navigation.navigate('Voter-Management');}}>Manage Voter's</Text>
+             <Text style={styles.text}onPress={() => { props.navigation.navigate('Voter-Management',{email:email});}}>Manage Voter's</Text>
            </Pressable>
          </View>
        <View style={styles.column}>

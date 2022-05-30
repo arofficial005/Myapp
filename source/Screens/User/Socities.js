@@ -1,19 +1,36 @@
 import { StyleSheet, Text, View,FlatList } from 'react-native'
-import React from 'react'
-
+import React,{useEffect} from 'react'
+import firestore from '@react-native-firebase/firestore';   
 const Socities = () => {
+  const socityarray=[]
+  useEffect(() => {
+    firestore()
+      .collection('Coordinators')
+      .get() .then(querySnapshot => {
+        querySnapshot.forEach(documentSnapshot => {
+          // console.log('Socity: ', documentSnapshot.data());
+          // setSocityarray([...socityarray,documentSnapshot.data()])
+          socityarray.push(documentSnapshot.data())
+          console.log(socityarray)
+        });
+      });
+  }, [])
+  
   return (
     
      
       <View style={styles.container}>
+        {socityarray.map((item,index)=>
+        {
+          console.log("item",item)
+
+          return(
+          <Text style={styles.item}>{item.id}</Text>
+        )})}
+
       <FlatList
-        data={[
-          {key: 'The Organizer Club'},
-          {key: 'Hayatian Computing Society'},
-          {key: 'Software Engeering Society'},
-       
-        ]}
-        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+        data={socityarray}
+        renderItem={({item}) => <Text style={styles.item}>{item.CoordinatorName}</Text>}
       />
     </View>
     

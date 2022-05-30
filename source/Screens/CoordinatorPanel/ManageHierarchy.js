@@ -97,7 +97,7 @@ placeholderTextColor='#fff'
       onChangeText={(fsemail) => setfsemail(fsemail)}
       placeholderTextColor='#fff'/>
       
-     <Text style={styles.title}>General Secretory</Text>
+     <Text style={styles.title}>General Secretary</Text>
      <TextInput style={styles.txt} placeholder="Enter name"
       underlineColorAndroid={'transparent'}
       value={gsname}
@@ -116,7 +116,7 @@ placeholderTextColor='#fff'
       onChangeText={(gsemail) => setgsemail(gsemail)}
       placeholderTextColor='#fff'/>
       
-     <Text style={styles.title}>Joint Secretory</Text>
+     <Text style={styles.title}>Joint Secretary</Text>
      <TextInput style={styles.txt} placeholder="Enter name"
       underlineColorAndroid={'transparent'}
       value={jsname}
