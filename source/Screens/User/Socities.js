@@ -1,8 +1,12 @@
 import { StyleSheet, Text, View,FlatList } from 'react-native'
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import firestore from '@react-native-firebase/firestore';   
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import {useNavigation} from "@react-navigation/native"
 const Socities = () => {
   const socityarray=[]
+  const [data, setData] = useState([])
+  const navigation=useNavigation()
   useEffect(() => {
     firestore()
       .collection('Coordinators')
@@ -12,26 +16,20 @@ const Socities = () => {
           // setSocityarray([...socityarray,documentSnapshot.data()])
           socityarray.push(documentSnapshot.data())
           console.log(socityarray)
+          setData(socityarray)
         });
       });
   }, [])
   
   return (
-    
-     
       <View style={styles.container}>
-        {socityarray.map((item,index)=>
-        {
-          console.log("item",item)
-
-          return(
-          <Text style={styles.item}>{item.id}</Text>
-        )})}
-
       <FlatList
-        data={socityarray}
-        renderItem={({item}) => <Text style={styles.item}>{item.CoordinatorName}</Text>}
-      />
+        data={data}
+        renderItem={({item}) =>         
+           <TouchableOpacity onPress={()=>navigation.navigate("CoordinatorHierarchy",{email:item.id})}>
+        <Text style={styles.item}>{item.Society}</Text>         
+           </TouchableOpacity>
+} />
     </View>
     
   )

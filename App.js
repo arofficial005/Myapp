@@ -24,6 +24,7 @@ import Mainlogin from './source/Screens/Login/Mainlogin';
 import AdminLogin from './source/Screens/Login/AdminLogin';
 import CoordinatorLogin from './source/Screens/Login/CoordinatorLogin';
 import Forgot from './source/Screens/Login/Forgot';
+import CoordinatorHierarchy from './source/Screens/User/CoordinatorHierarchy';
 const  App=()=>{
   const Stack=createStackNavigator();
 
@@ -112,6 +113,7 @@ const  App=()=>{
         headerTitle:"Coordinator",
         headerTitleAlign:"center", }}/>
            <Stack.Screen name="Socities" component={Socities}/>  
+           <Stack.Screen name="CoordinatorHierarchy" component={CoordinatorHierarchy}/>  
            <Stack.Screen name="ApplyforCand" component={ApplyforCand}
            options ={{  
             headerTitleStyle:{

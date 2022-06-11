@@ -65,7 +65,6 @@ else{
         <TextInput
           style={styles.TextInput}
           placeholder="xxxxxxxx-xxx"
-          data-inputmask="'mask': '99999999-999'"
           placeholderTextColor="#003f5c"
           keyboardType='number-pad'
           maxLength={12}

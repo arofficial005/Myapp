@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View,ScrollView,TextInput ,TouchableOpacity} from 'react-native'
+import { StyleSheet, Text, View,ScrollView,TextInput ,TouchableOpacity,Alert} from 'react-native'
 import React ,{useState,Component} from 'react'
+import firestore from '@react-native-firebase/firestore';   
 const ManageHierarchy = (props) => {
-
-
+  const email=props.route.params.email
+console.log("email at manage hirearchy",email)
   const [pname,setpname] =useState("");
   const [pdep,setpdep] =useState("");
   const [pemail,setpemail] =useState("");
@@ -28,9 +29,21 @@ const ManageHierarchy = (props) => {
   const [gddep,setgddep] =useState("");
   const [gdemail,setgdemail] =useState("");
   const handleSubmit = () => {
-    if (pname.trim()===""|| vpname.trim()===""|| fsname.trim()===""|| gsname.trim()===""|| isname.trim()===""|| mmname.trim()===""|| gdname.trim()==="" ) {
-      return setError("Complete all fields !")
-     } 
+    if (pname.trim()===""|| vpname.trim()===""|| fsname.trim()===""|| gsname.trim()===""|| isname.trim()===""|| mmname.trim()===""|| 
+    gdname.trim()==="" || pdep.trim()===""||pemail.trim()===""|| vpdep.trim()===""|| vpemail.trim()===""|| fsdep.trim()===""|| fsemail.trim()===""|| 
+    gsdep.trim()===""|| gsemail.trim()===""|| jsdep.trim()===""|| jsemail.trim()===""|| isdep.trim()===""|| isemail.trim()===""||  
+    mmdep.trim()===""|| mmemail.trim()===""||gddep.trim()===""||gdemail.trim()==="") {
+      Alert.alert("Complete all fields !")
+     } else{
+      firestore()
+      .collection('VoterManagement')
+      .doc(email)
+      .set({array:[{post:"President",name:pname,dept:pdep,email:pemail},{post:"Vice President",name:vpname,dept:vpdep,email:vpemail},{post:"Finance Secretary",name:fsname,dept:fsdep,email:fsemail},
+      {post:"Joint Secretary",name:jsname,dept:jsdep,email:jsemail},{post:"Information Secretary",name:isname,dept:isdep,email:isemail},{post:"Media Manager",name:mmname,dept:mmdep,email:mmemail},{post:"Graphic Designer",name:gdname,dept:gddep,email:gdemail}]})
+      .then(() => {
+        console.log('User added!');
+      });
+     }
 
   }
   return (

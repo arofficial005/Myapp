@@ -1,16 +1,24 @@
 import { StyleSheet,ScrollView, Text, View ,FlatList} from 'react-native'
 import React,{Component,useState,useEffect,useCallback} from 'react'
 
+import firestore from '@react-native-firebase/firestore';   
 
 
 
 const ComplainManage = () => {
   const [email,setEmail] =useState("");
   const [fsData,setFsData] = useState([])
-  
+  const arr=[]
   const getComplaint = useCallback(
     async () => {
-    const complaint = await firebase.firestore().collection('Complaints').get()
+    const complaint = await firestore().collection('Complaints').get().then(querySnapshot => {
+      querySnapshot.forEach(documentSnapshot => {
+        // console.log('Socity: ', documentSnapshot.data());
+        // setSocityarray([...socityarray,documentSnapshot.data()])
+        arr.push(documentSnapshot.data())
+        setFsData(arr)
+      });
+    });
     console.log(complaint.docs)
     setFsData(complaint.docs)
     },
@@ -31,9 +39,10 @@ const data=[{id:1}]
 <ScrollView>
    <View style={styles.container}>
       <FlatList
-      renderItem={({item})=><Text >{item._data.message}</Text>}
+      data={fsData}
+      renderItem={({item})=><Text style={styles.item}>{item.message}</Text>}
       />
-      <Text>Hello world</Text>
+      
     </View>
     </ScrollView>
     </>
@@ -51,13 +60,11 @@ const styles = StyleSheet.create({
    item: {
      padding: 10,
      fontSize: 18,
-     height: 44,  
       width: "100%",
-      borderRadius: 25,
       alignItems: "center",
       justifyContent: "center",
-      marginTop: 30,
-      backgroundColor: "#f5ac58",
-      textAlign: 'center',
+      marginTop: 10,
+      color:'white',
+      backgroundColor: "#36485f",
    },
 })

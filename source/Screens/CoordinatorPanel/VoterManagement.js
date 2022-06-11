@@ -8,6 +8,8 @@ const VoterManagement = (props) => {
   const [selectedrole, setSelectedrole] = useState(null)
   const [numbers, setNumbers] = useState("")
   const namesarray=[]
+  const departmentarray=[]
+  const rollarray=[]
   const [userdata, setUserdata] = useState({})
   const email=props.route.params.email
   useEffect(() => {
@@ -27,7 +29,7 @@ const VoterManagement = (props) => {
    console.log(userdata.Society)
   return (
     <>
-   
+   <ScrollView>
     <View style={styles.container}>
     <Text style={styles.header}>Select Candidate post for Election!</Text>
     <RNPickerSelect
@@ -49,17 +51,24 @@ const VoterManagement = (props) => {
      keyboardType="numeric" onChangeText={text=>setNumbers(text)}/>:null}
      { numbers !==''?<>
 {Array.from(Array(parseInt(numbers)).keys()).map((item,index)=>(
-  <TextInput key={index} value={namesarray[index]} placeholder=  {"Enter name"} onChangeText={text=>namesarray[index]=text}/>
+  <>
+  <Text>{index+1}</Text>
+  <TextInput key={index} value={namesarray[index]}style={styles.txt} placeholder=  {"Enter name"} onChangeText={text=>namesarray[index]=text}/>
+  
+  <TextInput key={index} value={departmentarray[index]} style={styles.txt} placeholder=  {"Enter Department"} onChangeText={text=>departmentarray[index]=text}/>
+  <TextInput key={index} value={rollarray[index]} style={styles.txt}placeholder=  {"Enter Roll No."} onChangeText={text=>rollarray[index]=text}/>
+  </>
 ))
 }
      </>:null}
      {numbers !==''?
-     <TouchableOpacity onPress={()=>console.log(namesarray)} style={{width:"100%",height:30,backgroundColor:"black"}}>
-
+     <TouchableOpacity onPress={()=>console.log(namesarray)} style={styles.btn}>
+  <Text >Generate Election !</Text>
      </TouchableOpacity>:null}
 </View>
-
+</ScrollView>
 </>
+
   )
 }
 
@@ -82,4 +91,19 @@ const styles = StyleSheet.create({
         textAlign:'center',
         
         },
+       btn:{
+          width: "30%",
+          borderRadius: 25,
+          height: 50,
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: 30,
+          backgroundColor: "#f5ac58",
+        },
+        txt:{
+          height:40,
+          marginBottom:20,
+          borderBottomColor:'#f8f8f8',
+          borderBottomWidth:1,
+            },
 });

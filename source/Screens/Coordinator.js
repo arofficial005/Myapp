@@ -37,7 +37,7 @@ const Coordinator=(props)=>{
          <TouchableHighlight>
            {<Image source={{ uri: 'https://c8.alamy.com/comp/2AK0WE9/company-structure-icon-isolated-white-background-corporate-hierarchy-and-employee-organization-2AK0WE9.jpg' }} style={styles.imgstyle} />}
          </TouchableHighlight>
-         <Pressable style={styles.button} onPress={() => { props.navigation.navigate('Manage-Hierarchy'); } }>
+         <Pressable style={styles.button} onPress={() => { props.navigation.navigate('Manage-Hierarchy',{email:email}); } }>
            <Text style={styles.text}>Mange hierarchy</Text>
          </Pressable>
        </View>
