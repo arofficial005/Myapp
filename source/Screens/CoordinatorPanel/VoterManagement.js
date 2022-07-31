@@ -1,17 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import RNPickerSelect from "react-native-picker-select";
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useCallback} from 'react'
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
-
+import { useNavigation } from '@react-navigation/native';
 const VoterManagement = (props) => {
   const [selectedrole, setSelectedrole] = useState(null)
   const [numbers, setNumbers] = useState("")
-  const namesarray=[]
-  const departmentarray=[]
-  const rollarray=[]
   const [userdata, setUserdata] = useState({})
+  const [votersdata, setVotersdata] = useState([])
   const email=props.route.params.email
+  const navigation=useNavigation()
   useEffect(() => {
     const subscriber = firestore()
      .collection('Coordinators')
@@ -26,7 +25,34 @@ const VoterManagement = (props) => {
      }
    });
    }, [])
-   console.log(userdata.Society)
+   const updateFieldChanged =   useCallback(
+     (index,text,value) => {
+    
+      let newArr = [...votersdata]; // copying the old datas array
+      newArr[index] = {...votersdata[index],[value]:text}; // replace e.target.value with whatever you want to change it to4
+      newArr[index] = {...votersdata[index],voteCount:0};
+      setVotersdata(newArr);
+     },
+     [setVotersdata,votersdata],
+   )
+   const HandlePress=useCallback(
+     () => {
+      firestore()
+      .collection('Voting')
+      .add({
+        society:userdata.Society,
+        role: selectedrole,
+        data: votersdata,
+        email:email
+      })
+      .then(() => {
+        console.log('User added!');
+        navigation.goBack()
+      });
+     },
+     [email,selectedrole,votersdata,userdata,navigation],
+   )
+   
   return (
     <>
    <ScrollView>
@@ -52,17 +78,41 @@ const VoterManagement = (props) => {
      { numbers !==''?<>
 {Array.from(Array(parseInt(numbers)).keys()).map((item,index)=>(
   <>
-  <Text>{index+1}</Text>
-  <TextInput key={index} value={namesarray[index]}style={styles.txt} placeholder=  {"Enter name"} onChangeText={text=>namesarray[index]=text}/>
+  <Text key={index}>{index+1}</Text>
+  <TextInput key={index} 
+  //  onChangeText={(text)=>setVotersdata([...votersdata,{...votersdata[index],name:text}])}
+  onChangeText={(text)=>updateFieldChanged(index,text,"name")}
+  // value={namesarray[index]}
+  onSubmitEditing={() =>  console.log("hi")}
+
+  style={styles.txt} placeholder=  {"Enter name"} 
   
-  <TextInput key={index} value={departmentarray[index]} style={styles.txt} placeholder=  {"Enter Department"} onChangeText={text=>departmentarray[index]=text}/>
-  <TextInput key={index} value={rollarray[index]} style={styles.txt}placeholder=  {"Enter Roll No."} onChangeText={text=>rollarray[index]=text}/>
+  // onChangeText={text=>namesarray[index]=text}
+  />
+  
+  <TextInput 
+  //  onChangeText={(text)=>setVotersdata([...votersdata,{...votersdata[index],dept:text}])}
+  onChangeText={(text)=>updateFieldChanged(index,text,"dept")}
+   key={index}
+  //  value={departmentarray[index]}
+    style={styles.txt} placeholder=  {"Enter Department"}
+  
+  // onChangeText={text=>departmentarray[index]=text}
+  />
+  <TextInput  
+  //  onChangeText={(text)=>setVotersdata([...votersdata,{...votersdata[index],rollno:text}])}
+  onChangeText={(text)=>updateFieldChanged(index,text,"rollno")}
+   key={index}
+  //  value={rollarray[index]}
+    style={styles.txt}placeholder=  {"Enter Roll No."}
+  //  onChangeText={text=>rollarray[index]=text}
+   />
   </>
 ))
 }
      </>:null}
      {numbers !==''?
-     <TouchableOpacity onPress={()=>console.log(namesarray)} style={styles.btn}>
+     <TouchableOpacity onPress={HandlePress} style={styles.btn}>
   <Text >Generate Election !</Text>
      </TouchableOpacity>:null}
 </View>
