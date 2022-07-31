@@ -56,7 +56,7 @@ const Coordinator=(props)=>{
            <TouchableHighlight>
              {<Image source={{ uri: 'https://media.istockphoto.com/photos/results-picture-id481104485?k=20&m=481104485&s=612x612&w=0&h=dwrHjuosLBAsuI_l8zmgYV-2ZoxAtmr0KKBgplsmeoI=' }} style={styles.imgstyle}/>}
            </TouchableHighlight>
-           <Pressable style={styles.button} onPress={() => { props.navigation.navigate('Check-Results'); } }>
+           <Pressable style={styles.button} onPress={() => { props.navigation.navigate('Check-Results',{email:email}); } }>
              <Text style={styles.text}>Check Results</Text>
            </Pressable>
          </View>
