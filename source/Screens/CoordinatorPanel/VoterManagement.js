@@ -71,7 +71,8 @@ const VoterManagement = (props) => {
             { label: "Graphic Designer", value: "Graphic Designer" },
         ]}
     />
-    {selectedrole!==null?<TextInput
+    {selectedrole!==null?
+    <TextInput
      placeholder='Please Enter Number of Candidates' 
     maxLength={1}
      keyboardType="numeric" onChangeText={text=>setNumbers(text)}/>:null}
