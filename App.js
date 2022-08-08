@@ -25,7 +25,10 @@ import AdminLogin from './source/Screens/Login/AdminLogin';
 import CoordinatorLogin from './source/Screens/Login/CoordinatorLogin';
 import Forgot from './source/Screens/Login/Forgot';
 import CoordinatorHierarchy from './source/Screens/User/CoordinatorHierarchy';
+import Forgotcoordinator from './source/Screens/CoordinatorPanel/Forgotcoordinator';
+
 const  App=()=>{
+ 
   const Stack=createStackNavigator();
 
     return (
@@ -132,7 +135,13 @@ const  App=()=>{
             },
             headerTitle:"Vote Now",
             headerTitleAlign:"center", }}/>
-          <Stack.Screen name="Results" component={Results}/> 
+          <Stack.Screen name="Results" component={Results}
+           options ={{  
+            headerTitleStyle:{
+              fontSize:25,
+            },
+            headerTitle:"Voting Result's",
+            headerTitleAlign:"center", }} /> 
           <Stack.Screen name="Complaints" component={ComplainManage}/>  
           <Stack.Screen name="Coordinators" component={CoordinatorManage}/>  
           <Stack.Screen name="Socities-Management" component={SocitiesManage}/> 
@@ -146,6 +155,17 @@ const  App=()=>{
           <Stack.Screen name="Coordinator-Complaints" component={CoordinatorComplaints}/>
           <Stack.Screen name="Complaint-Us" component={ComplainUs}/> 
           <Stack.Screen name="Forgott" component={Forgot}/>
+          <Stack.Screen name="forgotcoordinator" component={Forgotcoordinator}
+           options ={{  
+            headerTitleStyle:{
+              fontSize:25,
+              color: '#fff',
+            },
+            headerStyle: {
+              backgroundColor: '#94baf2',
+            },
+            headerTitle:" Update password !",
+            headerTitleAlign:"center", }}/>
      </Stack.Navigator>
     </NavigationContainer>
     

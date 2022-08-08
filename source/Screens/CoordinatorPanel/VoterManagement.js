@@ -72,7 +72,7 @@ const VoterManagement = (props) => {
         ]}
     />
     {selectedrole!==null?
-    <TextInput
+    <TextInput style={styles.txtt}
      placeholder='Please Enter Number of Candidates' 
     maxLength={1}
      keyboardType="numeric" onChangeText={text=>setNumbers(text)}/>:null}
@@ -80,7 +80,8 @@ const VoterManagement = (props) => {
 {Array.from(Array(parseInt(numbers)).keys()).map((item,index)=>(
   <>
   <Text key={index}>{index+1}</Text>
-  <TextInput key={index} 
+  <TextInput  key={index} 
+   
   //  onChangeText={(text)=>setVotersdata([...votersdata,{...votersdata[index],name:text}])}
   onChangeText={(text)=>updateFieldChanged(index,text,"name")}
   // value={namesarray[index]}
@@ -91,7 +92,7 @@ const VoterManagement = (props) => {
   // onChangeText={text=>namesarray[index]=text}
   />
   
-  <TextInput 
+  <TextInput  
   //  onChangeText={(text)=>setVotersdata([...votersdata,{...votersdata[index],dept:text}])}
   onChangeText={(text)=>updateFieldChanged(index,text,"dept")}
    key={index}
@@ -114,7 +115,7 @@ const VoterManagement = (props) => {
      </>:null}
      {numbers !==''?
      <TouchableOpacity onPress={HandlePress} style={styles.btn}>
-  <Text >Generate Election !</Text>
+  <Text style={styles.textbtn}>Generate Election !</Text>
      </TouchableOpacity>:null}
 </View>
 </ScrollView>
@@ -142,15 +143,35 @@ const styles = StyleSheet.create({
         textAlign:'center',
         
         },
-       btn:{
-          width: "30%",
-          borderRadius: 25,
-          height: 50,
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: 30,
-          backgroundColor: "#f5ac58",
-        },
+        txtt:{
+          fontSize:16,
+          color:'#199187',
+          paddingBottom:10,
+          marginBottom:30,
+          borderBottomColor:'#199187',
+          borderBottomWidth:3,
+          textAlign:'center',
+          
+          },
+          btn:  {    
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft:15,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginBottom:10,
+    elevation: 5,
+    backgroundColor: '#f5ac58',
+    width: "90%",
+          },
+   
+  textbtn: {
+    fontSize: 19,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
         txt:{
           height:40,
           marginBottom:20,
