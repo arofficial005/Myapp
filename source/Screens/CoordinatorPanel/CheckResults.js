@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View ,TouchableOpacity,Alert} from 'react-native'
+import { StyleSheet, Text, View ,TouchableOpacity,Alert,ScrollView} from 'react-native'
 import React,{useState,useEffect,useCallback} from 'react'
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
@@ -55,8 +55,10 @@ const FetchData=useCallback(
   return (
     <View>
       <Text>CheckResults</Text>
+      <ScrollView>
+     
       {results?.map((item,index)=>{
-        // console.log(ids)
+        // console.log(item)
         return(
           <>
           <TouchableOpacity onPress={()=>DeleteData(ids[index])}>
@@ -68,12 +70,15 @@ const FetchData=useCallback(
           <Text>Name: {object?.name}</Text>
           <Text>Roll #: {object?.rollno}</Text>
           <Text>Department: {object?.dept}</Text>
+          <Text>Vote Count: {object?.voteCount.length}</Text>
             </>
       ))}
           </>
 
         )
       })}
+         
+         </ScrollView>
     </View>
   )
 }
