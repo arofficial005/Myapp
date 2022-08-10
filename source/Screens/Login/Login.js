@@ -30,7 +30,7 @@ else{
   .then((user)=>{
     if(user.user.emailVerified){
       alert('User Login successfully');
-      props.navigation.navigate('Home');
+      props.navigation.navigate('Home',{email:email});
       setDisabledloginbtn(false)
     } else {
       alert('Please verify your email checkout inbox');

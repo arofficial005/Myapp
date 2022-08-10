@@ -4,6 +4,7 @@ import {  StyleSheet, Text, View, Image, TextInput, TouchableHighlight,Touchable
 import { ScrollView } from 'react-native-gesture-handler';
 
 const Home=(props)=>{
+  const email=props.route.params.email
   const signOutUser = () => {
     return Alert.alert(
       "Logout ?",
@@ -53,7 +54,7 @@ const Home=(props)=>{
            <TouchableHighlight>
              {<Image source={{ uri: 'https://media.istockphoto.com/vectors/voting-box-vector-id480760966?k=20&m=480760966&s=612x612&w=0&h=sanAUwoQKAYmNai-YhRmfFxVCJrbrl-RDA-llTARe84=' }} style={styles.imgstyle}/>}
            </TouchableHighlight>
-           <Pressable style={styles.button} onPress={() => { props.navigation.navigate('Vote'); } }>
+           <Pressable style={styles.button} onPress={() => { props.navigation.navigate('Vote',{email:email}); } }>
              <Text style={styles.text}>Vote Now</Text>
            </Pressable>
          </View>

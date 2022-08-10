@@ -26,6 +26,7 @@ import CoordinatorLogin from './source/Screens/Login/CoordinatorLogin';
 import Forgot from './source/Screens/Login/Forgot';
 import CoordinatorHierarchy from './source/Screens/User/CoordinatorHierarchy';
 import Forgotcoordinator from './source/Screens/CoordinatorPanel/Forgotcoordinator';
+import VoteNow from './source/Screens/User/VoteNow';
 
 const  App=()=>{
  
@@ -129,6 +130,13 @@ const  App=()=>{
             headerTitle:"Apply for candidate",
             headerTitleAlign:"center", }}/>
            <Stack.Screen name="Vote" component={Vote}
+           options ={{  
+            headerTitleStyle:{
+              fontSize:25,
+            },
+            headerTitle:"Vote Now",
+            headerTitleAlign:"center", }}/>
+             <Stack.Screen name="VoteNow" component={VoteNow}
            options ={{  
             headerTitleStyle:{
               fontSize:25,

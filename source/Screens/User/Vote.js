@@ -1,34 +1,53 @@
 import { StyleSheet, Text, View,FlatList } from 'react-native'
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useCallback} from 'react'
 import firestore from '@react-native-firebase/firestore';   
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {useNavigation} from "@react-navigation/native"
-const Vote = () => {
+const Vote = (props) => {
+  const email=props.route.params.email
   const socityarray=[]
   const [data, setData] = useState([])
+  const [ids, setIds] = useState([])
   const navigation=useNavigation()
+  const [found, setFound] = useState(false)
   useEffect(() => {
     firestore()
-      .collection('Coordinators')
+      .collection('Voting')
       .get() .then(querySnapshot => {
         querySnapshot.forEach(documentSnapshot => {
           // console.log('Socity: ', documentSnapshot.data());
           // setSocityarray([...socityarray,documentSnapshot.data()])
+          setIds((ids)=>[...ids,documentSnapshot.id])
           socityarray.push(documentSnapshot.data())
-          console.log(socityarray)
+          // console.log(socityarray)
           setData(socityarray)
         });
       });
   }, [])
+  const find=useCallback(
+    (item) => {
+      // console.log("find")
+      let found=false
+      item?.data?.map((object,index)=>{
+        if(object?.voteCount.includes(email)){
+          // console.log("found")
+          found=true
+          
+        }
+      })
+      return found
+    },
+    [email],
+  )
   
   return (
       <View style={styles.container}>
          <Text style={[styles.bigBlue]}>Choose society & vote your favourtite candidate</Text>
       <FlatList
         data={data}
-        renderItem={({item}) =>         
-           <TouchableOpacity onPress={()=>navigation.navigate("CoordinatorHierarchy",{email:item.id})}>
-        <Text style={styles.item}>{item.Society}</Text>         
+        renderItem={({item,index}) =>         
+           <TouchableOpacity disabled={find(item)} onPress={()=>navigation.navigate("VoteNow",{email:email,Data:item.data,id:ids[index]})}>
+        <Text style={styles.item}>{item.society}:{item.role}</Text>         
            </TouchableOpacity>
 } />
     </View>
