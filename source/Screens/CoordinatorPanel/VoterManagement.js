@@ -29,14 +29,15 @@ const VoterManagement = (props) => {
      (index,text,value) => {
     
       let newArr = [...votersdata]; // copying the old datas array
-      newArr[index] = {...votersdata[index],[value]:text}; // replace e.target.value with whatever you want to change it to4
-      newArr[index] = {...votersdata[index],voteCount:0};
+      newArr[index] = {...votersdata[index],[value]:text,voteCount:[]}; // replace e.target.value with whatever you want to change it to4
+      // newArr[index] = {...votersdata[index],voteCount:[]};
       setVotersdata(newArr);
      },
      [setVotersdata,votersdata],
    )
    const HandlePress=useCallback(
      () => {
+      console.log(votersdata)
       firestore()
       .collection('Voting')
       .add({
