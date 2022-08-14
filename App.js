@@ -127,7 +127,7 @@ const  App=()=>{
             headerStyle: {
               backgroundColor: '#94baf2',
             },
-            headerTitle:"Apply for candidate",
+            headerTitle:"Candidates apply inform",
             headerTitleAlign:"center", }}/>
            <Stack.Screen name="Vote" component={Vote}
            options ={{  

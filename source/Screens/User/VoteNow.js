@@ -30,13 +30,13 @@ const VoteNow = ({route}) => {
   )
   
   return (
-    <View>
+    <View styles={styles.container}>
         <FlatList
           data={data}
           renderItem={({item,index}) => <>
           <Text style={styles.item}>{item.name}</Text><Text style={styles.item}>{item.rollno}</Text><Text style={styles.item}>{item.dept}</Text>
-          <TouchableOpacity onPress={()=>HandleVote(index)}>
-            <Text>Vote Now</Text>
+          <TouchableOpacity onPress={()=>HandleVote(index)} style={styles.btn}>
+            <Text style={styles.text}>Vote Now !</Text>
           </TouchableOpacity>
           </>
           }
@@ -48,16 +48,38 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 22,
+    backgroundColor:'#36485f',
   },
   item: {
     padding: 10,
     fontSize: 18,
-    width: '100%',
+    height: 44, 
+    marginLeft:20, 
+     width: "90%",
+     borderRadius: 25,
+     alignItems: "center",
+     justifyContent: "center",
+     marginTop: 10,
+     backgroundColor: "#c3defa",
+     textAlign: 'center',
+  },
+  btn:  {    
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 15,
+    marginLeft:210,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginBottom:10,
+    elevation: 5,
     backgroundColor: '#f5ac58',
-    textAlign: 'center',
-  },
+    width: "40%",
+          },
+          textbtn: {
+            fontSize: 19,
+            lineHeight: 21,
+            fontWeight: 'bold',
+            letterSpacing: 0.25,
+            color: 'white',
+          },
 });
 export default VoteNow;

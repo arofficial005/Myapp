@@ -4,7 +4,7 @@ import React from 'react'
 const ApplyforCand = () => {
   return (
     <View>
-       <Text style={[styles.bigBlue]}> Choose society & apply for candidate</Text>
+       <Text style={[styles.bigBlue]}> First you have to choose society in which you are interested then waiting for open application ,when applications are accepting then apply for your post to Coordinator of society after applying ,respected  coordinator will invite you for interview when you will pass interview you will be shortlisted then Coordinator will generate Election.After winning Election you will be candidate. Thanks for using E-society !</Text>
     </View>
   )
 }

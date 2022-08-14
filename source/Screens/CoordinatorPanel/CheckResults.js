@@ -18,8 +18,8 @@ const DeleteData=useCallback(
   .delete()
   .then(() => (
     Alert.alert(
-      "Alert Title",
-      "My Alert Msg",
+      "Election Deleted Successfully !",
+      "Election has been deleted",
       [
        
         { text: "OK", onPress: ()=>navigation.goBack() }
@@ -53,24 +53,26 @@ const FetchData=useCallback(
 )
 
   return (
-    <View>
-      <Text>CheckResults</Text>
+    <View style={styles.container}>
+      <Text style={styles.bigBlue}>Voting Results</Text>
       <ScrollView>
      
       {results?.map((item,index)=>{
         // console.log(item)
         return(
           <>
-          <TouchableOpacity onPress={()=>DeleteData(ids[index])}>
-            <Text>Delete</Text>
+          <TouchableOpacity onPress={()=>DeleteData(ids[index])} style={styles.btn}>
+            <Text styles={styles.textbtn}>Delete Election</Text>
           </TouchableOpacity>
-          <Text>{item.role}</Text>
+          <Text style={styles.post}>{item.role}</Text>
           {item.data.map((object,index)=>(
             <>
-          <Text>Name: {object?.name}</Text>
-          <Text>Roll #: {object?.rollno}</Text>
-          <Text>Department: {object?.dept}</Text>
-          <Text>Vote Count: {object?.voteCount.length}</Text>
+            
+          <Text style={styles.item}>Name: {object?.name}</Text>
+          <Text style={styles.item}>Roll #: {object?.rollno}</Text>
+          <Text style={styles.item}>Department: {object?.dept}</Text>
+          <Text style={styles.item}>Vote Count: {object?.voteCount.length}</Text>
+          <Text style={styles.space}></Text>
             </>
       ))}
           </>
@@ -85,4 +87,61 @@ const FetchData=useCallback(
 
 export default CheckResults
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor:'#36485f',
+   },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,  
+     width: "100%",
+     borderRadius: 25,
+     alignItems: "center",
+     justifyContent: "center",
+     marginTop: 10,
+     backgroundColor: "#fcfcfc",
+     textAlign: 'center',
+  },
+  bigBlue: {
+    color: '#fcfcfc',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign:'center',
+  },
+  btn:  {    
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft:100,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginBottom:10,
+    elevation: 5,
+    marginTop:10,
+    backgroundColor: '#ed778a',
+    width: "50%",
+          },
+          space:  {    
+           marginTop:12,
+                  },
+      post:  {    
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginLeft:15,
+            paddingVertical: 10,
+            borderRadius: 10,
+            marginBottom:10,
+            elevation: 5,
+            backgroundColor: '#e3e8ae',
+            width: "90%",
+            textAlign:'center',
+                  },
+          textbtn: {
+            fontSize: 19,
+            lineHeight: 21,
+            fontWeight: 'bold',
+            letterSpacing: 0.25,
+            color: 'white',
+          },
+})
