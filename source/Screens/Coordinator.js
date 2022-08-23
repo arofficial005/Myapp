@@ -52,6 +52,15 @@ const Coordinator=(props)=>{
              <Text style={styles.text}onPress={() => { props.navigation.navigate('Voter-Management',{email:email});}}>Manage Voter's</Text>
            </Pressable>
          </View>
+         <View>
+         <TouchableHighlight>
+             {<Image source={{ uri: 'https://icons.iconarchive.com/icons/graphicloads/100-flat-2/128/inside-logout-icon.png' }} style={styles.imgstyle}/>}
+           </TouchableHighlight>
+           <Pressable style={styles.button} onPress={()=>props.navigation.navigate("Messaging",{society:email,email:email})} >
+             <Text style={styles.text}>Messaging</Text>
+           </Pressable>
+         </View>
+         
        <View style={styles.column}>
            <TouchableHighlight>
              {<Image source={{ uri: 'https://media.istockphoto.com/photos/results-picture-id481104485?k=20&m=481104485&s=612x612&w=0&h=dwrHjuosLBAsuI_l8zmgYV-2ZoxAtmr0KKBgplsmeoI=' }} style={styles.imgstyle}/>}

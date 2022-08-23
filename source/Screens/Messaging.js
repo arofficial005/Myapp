@@ -59,10 +59,19 @@ docRef.get().then((doc) => {
      <ScrollView>
         {messages?.map((item,index)=>(
            <>
-           {item.email===email?<View style={{backgroundColor:"teal",alignSelf:"flex-end",width:"50%",height:60,borderRadius:10,marginVertical:10,padding:10}}>
-<Text>{item.message}</Text>
-           </View>:<View style={{backgroundColor:"yellow",width:"50%",height:60,borderRadius:10,marginVertical:10,padding:10}}><Text>{item.message}</Text>
-</View>}
+           {item.email===email?
+           <View style={{alignSelf:"flex-end",width:"60%",height:60,marginVertical:10}}>
+                       <Text>{item.email}</Text>
+           <View style={{backgroundColor:"teal",alignSelf:"flex-end",width:"100%",height:"100%",borderRadius:10,padding:10}}>
+            <Text>{item.message}</Text>
+           </View>
+           </View>:
+           <View>
+
+           <View style={{backgroundColor:"yellow",width:"50%",height:60,borderRadius:10,marginVertical:10,padding:10}}>
+            <Text>{item.message}</Text>
+           </View>
+            </View>}
            </>
         ))}
      </ScrollView>
