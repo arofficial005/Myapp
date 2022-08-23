@@ -1,10 +1,41 @@
-import React from 'react';
-import { firebase } from '@react-native-firebase/auth';
+import React,{useEffect,useCallback,useState} from 'react';
+import firestore from '@react-native-firebase/firestore';   
 import {  StyleSheet, Text, View, Image, TextInput, TouchableHighlight,TouchableOpacity, Pressable ,Alert} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import { useNavigation } from '@react-navigation/native';
 const Home=(props)=>{
+  const navigation=useNavigation()
   const email=props.route.params.email
+  const [showmessage, setShowmessage] = useState(false)
+  const [society, setSociety] = useState("")
+  useEffect(() => {
+    FetchData()
+  }, [])
+  const FetchData=useCallback(
+    () => {
+      firestore()
+      .collection('VoterManagement')
+      .get()
+      .then(querySnapshot => {
+        /* ... */
+        // console.log(querySnapshot.size)
+        querySnapshot.forEach(documentSnapshot => {
+          documentSnapshot.data().array.map((item,index)=>{
+            if(item.email.substring(0,12)===email)
+            {
+              setShowmessage(true)
+              setSociety(documentSnapshot.id)
+            }
+          }
+          )
+          // setResults(results=>[...results,documentSnapshot.data()])
+        });
+      });
+    
+    },
+    [email],
+  )
+  
   const signOutUser = () => {
     return Alert.alert(
       "Logout ?",
@@ -78,6 +109,14 @@ const Home=(props)=>{
              <Text style={styles.text}>Complaint Us</Text>
            </Pressable>
          </View>
+         {showmessage?    <View style={styles.column}>
+         <TouchableHighlight>
+             {<Image source={{ uri: 'https://icons.iconarchive.com/icons/graphicloads/100-flat-2/128/inside-logout-icon.png' }} style={styles.imgstyle}/>}
+           </TouchableHighlight>
+           <Pressable style={styles.button} onPress={()=>navigation.navigate("Messaging",{society:society,email:email})} >
+             <Text style={styles.text}>Messaging</Text>
+           </Pressable>
+         </View>:null}
          <View style={styles.column}>
          <TouchableHighlight>
              {<Image source={{ uri: 'https://icons.iconarchive.com/icons/graphicloads/100-flat-2/128/inside-logout-icon.png' }} style={styles.imgstyle}/>}

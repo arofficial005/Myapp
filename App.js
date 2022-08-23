@@ -28,6 +28,7 @@ import Forgot from './source/Screens/Login/Forgot';
 import CoordinatorHierarchy from './source/Screens/User/CoordinatorHierarchy';
 import Forgotcoordinator from './source/Screens/CoordinatorPanel/Forgotcoordinator';
 import VoteNow from './source/Screens/User/VoteNow';
+import Messaging from './source/Screens/Messaging';
 
 const  App=()=>{
  
@@ -159,6 +160,8 @@ const  App=()=>{
             headerTitle:"Voting Result's",
             headerTitleAlign:"center", }} /> 
           <Stack.Screen name="Complaints" component={ComplainManage}/>  
+          <Stack.Screen name="Messaging" component={Messaging}/>  
+
           <Stack.Screen name="Coordinators" component={CoordinatorManage}/>  
           <Stack.Screen name="Socities-Management" component={SocitiesManage}/> 
           <Stack.Screen name="My-Socities" component={MySocities}/>  
