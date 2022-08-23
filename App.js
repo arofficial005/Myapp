@@ -11,6 +11,7 @@ import Socities from './source/Screens/User/Socities';
 import ApplyforCand from './source/Screens/User/ApplyforCand';
 import Vote from './source/Screens/User/Vote';
 import Results from './source/Screens/User/Results';
+import ResultDetails from './source/Screens/User/ResultDetails';
 import ComplainManage from './source/Screens/adminpanel/ComplaintManage';
 import CoordinatorManage from './source/Screens/adminpanel/CoordinatorManage';
 import SocitiesManage from './source/Screens/adminpanel/SocitiesManage';
@@ -144,6 +145,13 @@ const  App=()=>{
             headerTitle:"Vote Now",
             headerTitleAlign:"center", }}/>
           <Stack.Screen name="Results" component={Results}
+           options ={{  
+            headerTitleStyle:{
+              fontSize:25,
+            },
+            headerTitle:"Result's Details",
+            headerTitleAlign:"center", }} /> 
+                   <Stack.Screen name="ResultDetails" component={ResultDetails}
            options ={{  
             headerTitleStyle:{
               fontSize:25,
