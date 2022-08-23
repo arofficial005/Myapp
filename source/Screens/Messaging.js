@@ -7,33 +7,49 @@ const Messaging = ({route}) => {
     console.log(society,email)
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState("")
-    useEffect(() => {
-        setMessages([
-          {
-            _id: 1,
-            text: 'Hello developer',
-            createdAt: new Date(),
-            user: {
-              _id: 2,
-              name: 'React Native',
-              avatar: 'https://placeimg.com/140/140/any',
-            },
-          },
-        ])
-      }, [])
+  useEffect(() => {
+    firestore()
+    .collection('Messaging')
+    .doc(society)
+    .get()
+    .then(querySnapshot => {
+      /* ... */
+      console.log(querySnapshot.data())
+    setMessages(querySnapshot.data().messages)
+    });
+  }, [])
+  
       const HandleMessage=useCallback(
         () => {
             setMessages((messages)=>[...messages,{message:inputText,email:email}])
             setInputText("")
-            firestore()
-  .collection('Messaging')
-  .doc(society)
-  .update({
-    messages: messages,
-  })
-  .then(() => {
-    console.log('User updated!');
-  });
+            var docRef = firestore().collection("Messaging").doc(society);
+
+docRef.get().then((doc) => {
+    if (doc.exists) {
+        firestore()
+        .collection('Messaging')
+        .doc(society)
+        .update({
+          messages: [...messages,{message:inputText,email:email}],
+        })
+        .then(() => {
+          console.log('User updated!');
+        });    } else {
+        // doc.data() will be undefined in this case
+        firestore()
+        .collection('Messaging')
+        .doc(society)
+        .set({
+            messages: messages,
+        })
+        .then(() => {
+          console.log('User added!');
+        });    }
+}).catch((error) => {
+    console.log("Error getting document:", error);
+});
+ 
         },
         [email,inputText,messages],
       )
