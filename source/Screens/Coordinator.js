@@ -52,14 +52,6 @@ const Coordinator=(props)=>{
              <Text style={styles.text}onPress={() => { props.navigation.navigate('Voter-Management',{email:email});}}>Manage Voter's</Text>
            </Pressable>
          </View>
-         <View>
-         <TouchableHighlight>
-             {<Image source={{ uri: 'https://icons.iconarchive.com/icons/graphicloads/100-flat-2/128/inside-logout-icon.png' }} style={styles.imgstyle}/>}
-           </TouchableHighlight>
-           <Pressable style={styles.button} onPress={()=>props.navigation.navigate("Messaging",{society:email,email:email})} >
-             <Text style={styles.text}>Messaging</Text>
-           </Pressable>
-         </View>
          
        <View style={styles.column}>
            <TouchableHighlight>
@@ -72,11 +64,19 @@ const Coordinator=(props)=>{
          </View>
           {/************************************************************************************************** */}
       <View style={styles.container}>
+      <View style={styles.column}>
+         <TouchableHighlight>
+             {<Image source={{ uri: 'https://www.kindpng.com/picc/m/118-1181722_google-icons-sms-computer-messenger-facebook-android-android.png' }} style={styles.imgstyle}/>}
+           </TouchableHighlight>
+           <Pressable style={styles.button} onPress={()=>props.navigation.navigate("Messaging",{society:email,email:email})} >
+             <Text style={styles.text}>Message</Text>
+           </Pressable>
+         </View>
             <View style={styles.column}>
          <TouchableHighlight>
              {<Image source={{ uri: 'https://icons.iconarchive.com/icons/graphicloads/100-flat-2/128/inside-logout-icon.png' }} style={styles.imgstyle}/>}
            </TouchableHighlight>
-           <Pressable style={styles.butonlast} onPress={signOutUser} >
+           <Pressable style={styles.button} onPress={signOutUser} >
              <Text style={styles.text}>Logout</Text>
            </Pressable>
          </View>

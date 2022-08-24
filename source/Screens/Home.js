@@ -109,32 +109,31 @@ const Home=(props)=>{
              <Text style={styles.text}>Complaint Us</Text>
            </Pressable>
          </View>
-         {showmessage?    <View style={styles.column}>
+        
+          <View style={styles.column}>
+          <TouchableHighlight>
+              {<Image source={{ uri: 'https://icons.iconarchive.com/icons/graphicloads/100-flat-2/128/inside-logout-icon.png' }} style={styles.imgstyle}/>}
+            </TouchableHighlight>
+            <Pressable style={styles.button} onPress={signOutUser} >
+              <Text style={styles.text}>Logout</Text>
+            </Pressable>
+          </View> 
+          
+         </View>
+         {/************************************************************************************************** */}
+    
+      
+       <View style={styles.container}>
+       {showmessage? 
+        <View style={styles.column}>
          <TouchableHighlight>
-             {<Image source={{ uri: 'https://icons.iconarchive.com/icons/graphicloads/100-flat-2/128/inside-logout-icon.png' }} style={styles.imgstyle}/>}
+             {<Image source={{ uri: 'https://www.kindpng.com/picc/m/118-1181722_google-icons-sms-computer-messenger-facebook-android-android.png' }} style={styles.imgstyle}/>}
            </TouchableHighlight>
-           <Pressable style={styles.button} onPress={()=>navigation.navigate("Messaging",{society:society,email:email})} >
-             <Text style={styles.text}>Messaging</Text>
+           <Pressable style={styles.butonlast} onPress={()=>navigation.navigate("Messaging",{society:society,email:email})} >
+             <Text style={styles.text}>Message</Text>
            </Pressable>
          </View>:null}
-         <View style={styles.column}>
-         <TouchableHighlight>
-             {<Image source={{ uri: 'https://icons.iconarchive.com/icons/graphicloads/100-flat-2/128/inside-logout-icon.png' }} style={styles.imgstyle}/>}
-           </TouchableHighlight>
-           <Pressable style={styles.button} onPress={signOutUser} >
-             <Text style={styles.text}>Logout</Text>
-           </Pressable>
          </View>
-       </View>
-       {/* ********************************************************************* */}
-       {/* <View style={styles.loginBtn}>
-
-      <TouchableOpacity onPress={()=>{props.navigation.navigate('Register')}}  >
-        <Text style={[styles.bigBlue, styles.red]}>Register Screen</Text>
-      </TouchableOpacity>
-     
-   </View> */}
-   
              </>
       </ScrollView>
       </>
