@@ -81,10 +81,10 @@ const CoordinatorLogin = (props) => {
           />
         </View>
    
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <Text style={styles.forgot_button}onPress={() => { props.navigation.navigate('forgotcoordinator');}}>Forgot Password?</Text>
         </TouchableOpacity> 
-  
+   */}
         <TouchableOpacity  style={styles.loginBtn} onPress={handleSubmit}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
