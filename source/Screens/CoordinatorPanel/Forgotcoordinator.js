@@ -1,5 +1,6 @@
 import { StyleSheet, TextInput, View,SafeAreaView,TouchableOpacity,Text} from 'react-native'
 import React ,{useState}from 'react'
+
 const  Forgotcoordinator=(props)=>
 
 {
