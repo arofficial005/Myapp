@@ -2,10 +2,13 @@ import React from 'react';
 import {  StyleSheet, Text, View, Image, TextInput, TouchableHighlight,TouchableOpacity, Pressable } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { LogBox } from 'react-native'; // gesture handler warning
+
 const Mainlogin=(props)=>{
     LogBox.ignoreLogs([
         "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
       ]); 
+
+      
    return (
          
      <ScrollView style={styles.mainn}>
